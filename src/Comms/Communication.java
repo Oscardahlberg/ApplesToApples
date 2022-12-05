@@ -59,7 +59,7 @@ public class Communication {
         String[] msg = new String[10];
 
         try {
-            msg[0] = (String) psi.objectInputStream().readObject();
+            msg[0] = (String) psi.getObjectInputStream().readObject();
         } catch(Exception e) {
             System.exit(0);
         }
@@ -69,7 +69,7 @@ public class Communication {
 
     public void sendData(String msg, PlayerSocketInfo psi) {
         try {
-            psi.objectOutputStream().writeObject("data:" + msg);
+            psi.getObjectOutputStream().writeObject("data:" + msg);
         } catch (IOException e) {
             System.out.println("couldnt connect or smt idk3");
             System.exit(0);

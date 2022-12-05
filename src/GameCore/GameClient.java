@@ -7,8 +7,8 @@ public class GameClient extends GameBase {
 
     Communication communication = new Communication(false);
 
-    public void start(int playerCount) {
-        this.playerCount = playerCount;
+    public void start(int playerCount, int botCount) {
+        this.playerCount = playerCount + botCount; // doesn't matter for client
 
         setUp();
 

@@ -11,12 +11,14 @@ public class GameStart {
         if(isServer) {
             System.out.println("Server");
             GameServer gameServer = new GameServer();
-            gameServer.start(askPlayerCount());
+            int totalPlayerCount = askPlayerCount();
+            int botCount = askBotCount(totalPlayerCount);
+            gameServer.start(totalPlayerCount - botCount, botCount);
         } else {
             System.out.println("Client");
             GameClient gameClient = new GameClient();
             // 0 is placeholder for when playerCount is received from server
-            gameClient.start(0);
+            gameClient.start(0, 0);
         }
 
     }
@@ -36,4 +38,11 @@ public class GameStart {
 
         return GUI.validUserInput(3,100);
     }
+
+    private int askBotCount(int totalPlayerCount) {
+        System.out.println("How many of those are bots? Maximum " + totalPlayerCount);
+
+        return GUI.validUserInput(0, totalPlayerCount);
+    }
+
 }

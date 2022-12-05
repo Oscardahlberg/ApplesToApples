@@ -11,7 +11,7 @@ public abstract class GameBase {
     int greenApplesWinCount;
     int playerCount;
 
-    abstract void start(int playerCount);
+    abstract void start(int playerCount, int botCount);
     abstract void setUp();
 
     void phase() {
