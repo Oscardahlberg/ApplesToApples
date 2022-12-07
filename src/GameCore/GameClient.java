@@ -27,7 +27,12 @@ public class GameClient extends GameBase {
 
         String[] setupData = communication.waitForData(psi);
 
-        handleSetupData(setupData);
+        handleSetupData(setupData, psi);
+    }
+
+    public void decideJudgeP() {
+        this.judgeId = Integer.parseInt(communication.waitForData(players.get(this.clientPlayerId).getPsi())[1]);
+        System.out.println("Player " + this.judgeId + " is the judge this turn");
     }
 
     public void drawGreenAppleP() {
@@ -46,7 +51,7 @@ public class GameClient extends GameBase {
 
     }
 
-    private void handleSetupData(String[] setupData) { //TODO: TESTTTTTTTTTT
+    private void handleSetupData(String[] setupData, PlayerSocketInfo psi) {
         ArrayList<String> hand = new ArrayList<>();
         int playerId = -1;
 
@@ -63,13 +68,15 @@ public class GameClient extends GameBase {
             } else if(setupData[i].equals("playerCount")) {
                 for(int j = 0; j < Integer.parseInt(setupData[i + 1]); j++) {
                     if(j == playerId) {
-                        players.add(new Player(false, null, j, hand));
+                        players.add(new Player(false, psi, j, hand));
+                        continue;
                     }
                     players.add(new Player(false, null, j, null));
                 }
 
             } else if (setupData[i].equals("botCount")){
-                for(int j = this.players.size(); j < Integer.parseInt(setupData[i + 1]); j++) {
+                int realPlayerCount = this.players.size();
+                for(int j = realPlayerCount; j < (Integer.parseInt(setupData[i + 1]) + realPlayerCount); j++) {
                     players.add(new Player(true, null, j, null));
                 }
             }

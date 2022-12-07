@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class GameServer extends GameBase {
 
@@ -37,6 +38,16 @@ public class GameServer extends GameBase {
         distributeHands();
     }
 
+    public void decideJudgeP() {
+        if(this.judgeId == (this.players.size() - 1)) {
+            this.judgeId = 0;
+        } else {
+            this.judgeId++;
+        }
+
+        announceJudge();
+    }
+
     public void drawGreenAppleP() {
 
     }
@@ -51,6 +62,18 @@ public class GameServer extends GameBase {
 
     public void distributeRedApplesP() {
 
+    }
+
+    private void announceJudge() {
+        for(Player player: this.players) {
+            if(player.getIsBot()) {
+                return; // can do this because player list will be structured in a predetermined way
+            }
+            if(player.getPlayerId() != 0) {
+                communication.sendData("judge;" + this.judgeId, player.getPsi());
+            }
+        }
+        System.out.println("Player " + this.judgeId + " is the judge this turn");
     }
 
 
@@ -99,7 +122,7 @@ public class GameServer extends GameBase {
     private ArrayList<String> generateHand() {
         ArrayList<String> hand = new ArrayList<>();
         for(int i = 0; i < 7; i++) {
-            hand.add(redApples.get(0));
+            hand.add(redApples.remove(0));
         }
         return hand;
     }

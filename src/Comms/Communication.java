@@ -67,7 +67,7 @@ public class Communication {
             // handle
             System.exit(0);
         }
-        return data.split(";");
+        return data.split(":")[1].split(";");
     }
 
     public void sendData(String msg, PlayerSocketInfo psi) {
@@ -89,7 +89,7 @@ public class Communication {
         for (String card : hand) {
             msg += card + ";";
         }
-        msg += ";playerId;" + playerId;
+        msg += "playerId;" + playerId;
         msg += ";playerCount;" + players;
         msg += ";botCount;" + bots;
         sendData(msg, psi);

@@ -9,8 +9,9 @@ public abstract class GameBase {
 
     ArrayList<String> greenApples;
     ArrayList<String> redApples;
-    int greenApplesWinCount;
+    int greenApplesWinCount = 3;
     int playerCount;
+    int judgeId = -1;
 
     public ArrayList<Player> players = new ArrayList<Player>();
 
@@ -18,13 +19,14 @@ public abstract class GameBase {
     abstract void setUp();
 
     void phase() {
+        decideJudgeP();
         drawGreenAppleP();
         submitRedAppleP();
         judgeWinnerP();
         distributeRedApplesP();
     }
 
-    // Phase methods has a suffix "P"
+    abstract void decideJudgeP();
     abstract void drawGreenAppleP();
     abstract void submitRedAppleP();
     abstract void judgeWinnerP();

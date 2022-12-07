@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50f3778d-e8e1-4a17-b740-df44da24111b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/Player/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Comms/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Comms/Communication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameCore/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameStart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +102,7 @@
   "keyToString": {
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Programming Folder/Java/Own Projects/test",
+    "last_opened_file_path": "C:/Users/GhostCleaner/Desktop/D7032E/ApplesToApples/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -167,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670242301978</updated>
       <workItem from="1670242307190" duration="1011000" />
-      <workItem from="1670243579910" duration="4207000" />
+      <workItem from="1670243579910" duration="9714000" />
     </task>
     <servers />
   </component>
@@ -220,6 +213,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GameCore/GameBase.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
