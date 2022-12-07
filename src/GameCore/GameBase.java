@@ -1,6 +1,7 @@
 package GameCore;
 
 import Comms.Communication;
+import Player.Player;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ public abstract class GameBase {
     ArrayList<String> redApples;
     int greenApplesWinCount;
     int playerCount;
+
+    public ArrayList<Player> players = new ArrayList<Player>();
 
     abstract void start(int playerCount, int botCount);
     abstract void setUp();

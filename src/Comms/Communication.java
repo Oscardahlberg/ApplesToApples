@@ -5,8 +5,10 @@ import Player.PlayerSocketInfo;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Communication {
 
@@ -55,16 +57,17 @@ public class Communication {
     }
 
     // TODO: ADD MSG HANDLER
-    public String[] waitOnData(PlayerSocketInfo psi) {
-        String[] msg = new String[10];
+    public String[] waitForData(PlayerSocketInfo psi) {
+        String data = "";
 
         try {
-            msg[0] = (String) psi.getObjectInputStream().readObject();
+            data = (String) psi.getObjectInputStream().readObject();
         } catch(Exception e) {
+            System.out.println("Could not get msg");
+            // handle
             System.exit(0);
         }
-
-        return msg;
+        return data.split(";");
     }
 
     public void sendData(String msg, PlayerSocketInfo psi) {
@@ -72,7 +75,24 @@ public class Communication {
             psi.getObjectOutputStream().writeObject("data:" + msg);
         } catch (IOException e) {
             System.out.println("couldnt connect or smt idk3");
+            // notify disconnect and handle it
             System.exit(0);
         }
     }
+
+    public void sendStartData(ArrayList<String> hand,
+                              int playerId,
+                              int players,
+                              int bots,
+                              PlayerSocketInfo psi) {
+        String msg = "hand;";
+        for (String card : hand) {
+            msg += card + ";";
+        }
+        msg += ";playerId;" + playerId;
+        msg += ";playerCount;" + players;
+        msg += ";botCount;" + bots;
+        sendData(msg, psi);
+    }
+
 }

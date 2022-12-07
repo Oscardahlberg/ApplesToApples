@@ -40,9 +40,10 @@ public class GameStart {
     }
 
     private int askBotCount(int totalPlayerCount) {
-        System.out.println("How many of those are bots? Maximum " + totalPlayerCount);
+        System.out.println("How many of those are bots? Maximum: "
+                + (totalPlayerCount - 1)); // -1 because there always has to be one player
 
-        return GUI.validUserInput(0, totalPlayerCount);
+        return GUI.validUserInput(1, totalPlayerCount - 1);
     }
 
 }

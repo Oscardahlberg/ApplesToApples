@@ -4,15 +4,18 @@ import Comms.Communication;
 import Player.Player;
 import Player.PlayerSocketInfo;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameServer extends GameBase {
 
     private int botCount;
 
     Communication communication = new Communication(true);
-
-    private ArrayList<Player> players = new ArrayList<Player>();
 
     public void start(int playerCount, int botCount) {
         this.playerCount = playerCount;
@@ -25,14 +28,13 @@ public class GameServer extends GameBase {
 
     public void setUp() {
 
-        connectPlayers();
-
         initApples();
 
         shuffleDeck();
 
-        distributeHands();
+        setupPlayers();
 
+        distributeHands();
     }
 
     public void drawGreenAppleP() {
@@ -51,52 +53,73 @@ public class GameServer extends GameBase {
 
     }
 
-    private void connectPlayers() {
-        if(this.playerCount > 0) {
-            System.out.println("Waiting on players to connect...");
-        }
 
-        for (int i = 0; i < this.playerCount; i++) {
-            String msg = "";
-            PlayerSocketInfo psi = communication.connectToClient();
+    private void setupPlayers() {
+        players.add(new Player(false, null, 0, null)); // server player
 
-            players.add(new Player(false, psi, i, null));
-
-            communication.sendData("", psi);
-        }
+        connectPlayersAndSendSetupData();
 
         for (int i = this.playerCount - 1; i < this.botCount + this.playerCount - 1; i++) {
 
             players.add(new Player(true, null, i, null));
         }
+    }
 
+    private void connectPlayersAndSendSetupData() {
+        if(this.playerCount > 1) {
+            System.out.println("Waiting on players to connect...");
+        }
+
+        for (int i = 1; i < this.playerCount; i++) {
+            PlayerSocketInfo psi = communication.connectToClient();
+
+            players.add(new Player(false, psi, i, null));
+
+            communication.sendStartData(
+                    generateHand(),
+                    i,
+                    this.playerCount,
+                    this.botCount,
+                    psi);
+        }
     }
 
     private void distributeHands() {
         for (Player player: this.players) {
-            ArrayList<String> hand = generateHand();
-
-            if(!player.getIsBot()) {
-                player.setHand(hand);
-            } else {
-                // Communication.sendCards(player.getPsi(), hand);
+            if(player.getIsBot() || player.getPlayerId() == 0) {
+                player.setHand(generateHand());
             }
         }
     }
 
+    private void distributePlayerDataToClients() {
+
+    }
 
     private ArrayList<String> generateHand() {
         ArrayList<String> hand = new ArrayList<>();
-        hand.add("card1");
+        for(int i = 0; i < 7; i++) {
+            hand.add(redApples.get(0));
+        }
         return hand;
     }
-    /*
-    private void shuffleDeck() {
 
+    private void shuffleDeck() {
+        Collections.shuffle(redApples);
+        Collections.shuffle(greenApples);
     }
 
     private void initApples() {
-
-    }*/
+        try {
+            redApples = new ArrayList<String>(Files.readAllLines(Paths.get(
+                    "src/Apples/RedApples", "redApples.txt"), StandardCharsets.ISO_8859_1));
+            greenApples = new ArrayList<String>(Files.readAllLines(Paths.get(
+                    "src/Apples/GreenApples", "greenApples.txt"), StandardCharsets.ISO_8859_1));
+        } catch (IOException e) {
+            System.out.println("Couldn't read cards");
+            // notifyServerCrash();
+            System.exit(0);
+        }
+    }
 
 }

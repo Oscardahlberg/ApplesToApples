@@ -5,25 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50f3778d-e8e1-4a17-b740-df44da24111b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplesToApples.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ApplesToApples.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GUI/GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Main.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/Player/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Comms/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Comms/Communication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player/PlayerSocketInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/PlayerSocketInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +107,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Programming Folder/Java/Own Projects/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -214,6 +209,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">
