@@ -5,11 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50f3778d-e8e1-4a17-b740-df44da24111b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/ApplesToApples/ApplesToApples.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ApplesToApples/out/production/ApplesToApples/ApplesToApples.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Apples/RedApples/redApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/Apples/RedApples/redApples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/Comms/Communication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/Comms/Communication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GUI/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/GameCore/GameStart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ApplesToApples/out/production/ApplesToApples/Apples/RedApples/redApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ApplesToApples/out/production/ApplesToApples/Apples/RedApples/redApples.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Comms/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Comms/Communication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameCore/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameCore/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameCore/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/Apples/GreenApples/greenApples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/Apples/RedApples/redApples.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/Apples/RedApples/redApples.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/Comms/Communication.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/Comms/Communication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/GUI/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/production/ApplesToApples/GameCore/GameStart.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +68,9 @@
     <option name="height" value="990" />
   </component>
   <component name="ProjectId" id="2IUkUjvxgulIdBGXAUjHmlLHS1p" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -100,9 +126,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/GhostCleaner/Desktop/D7032E/ApplesToApples/src",
+    "last_opened_file_path": "C:/Programming Folder/Java/LTU/D7032E/ApplesToApples/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -161,6 +190,9 @@
       <updated>1670242301978</updated>
       <workItem from="1670242307190" duration="1011000" />
       <workItem from="1670243579910" duration="9714000" />
+      <workItem from="1670442693290" duration="14058000" />
+      <workItem from="1670534409203" duration="7637000" />
+      <workItem from="1670600439550" duration="8306000" />
     </task>
     <servers />
   </component>
@@ -218,12 +250,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameCore/GameBase.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/GameCore/GameServer.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="GameCore.GameServer" memberName="players" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Main.java">

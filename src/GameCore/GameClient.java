@@ -1,6 +1,8 @@
 package GameCore;
 
+import Comms.ClientComms;
 import Comms.Communication;
+import GUI.GUI;
 import Player.Player;
 import Player.PlayerSocketInfo;
 
@@ -8,10 +10,7 @@ import java.util.ArrayList;
 
 public class GameClient extends GameBase {
 
-    Communication communication = new Communication(false);
-
     private int clientPlayerId = -1;
-
 
     public void start(int playerCount, int botCount) {
         this.playerCount = playerCount + botCount; // doesn't matter for client
@@ -23,24 +22,30 @@ public class GameClient extends GameBase {
 
     public void setUp() {
 
+        ClientComms communication = new ClientComms();
         PlayerSocketInfo psi = communication.connectToServer();
 
-        String[] setupData = communication.waitForData(psi);
+        String[] setupData = Communication.waitForData(psi);
+
+        System.out.println("Game has begun!");
 
         handleSetupData(setupData, psi);
     }
 
     public void decideJudgeP() {
-        this.judgeId = Integer.parseInt(communication.waitForData(players.get(this.clientPlayerId).getPsi())[1]);
+        this.judgeId = Integer.parseInt(Communication.waitForData(players.get(this.clientPlayerId).getPsi())[1]);
         System.out.println("Player " + this.judgeId + " is the judge this turn");
     }
 
     public void drawGreenAppleP() {
-
+        getApple();
     }
 
     public void submitRedAppleP() {
-
+        chooseRedApple();
+        submitRedApple();
+        //getPlayedRedApples(); //TODO: CREATE
+        int i = 5;
     }
 
     public void judgeWinnerP() {
@@ -49,6 +54,34 @@ public class GameClient extends GameBase {
 
     public void distributeRedApplesP() {
 
+    }
+
+    private void submitRedApple() {
+        if(this.judgeId == this.clientPlayerId) { // if server is the judge
+            return;
+        }
+
+        String msg = "RedApple;" + this.drawnRedApples.get(0);
+
+        Communication.sendData(msg, this.players.get(this.clientPlayerId).getPsi());
+    }
+
+    private void chooseRedApple() {
+        if(this.judgeId == this.clientPlayerId) { // if client is the judge
+            return;
+        }
+
+        System.out.println("Which red apple describes the green apple best");
+        this.drawnRedApples.add(GUI.chooseRedApple(this.players.get(this.clientPlayerId).getHand()));
+
+    }
+
+    private void getApple() {
+        String[] msg = Communication.waitForData(players.get(this.clientPlayerId).getPsi());
+
+        this.drawnGreenApple = msg[1];
+
+        System.out.println("Green Apple: " + this.drawnGreenApple);
     }
 
     private void handleSetupData(String[] setupData, PlayerSocketInfo psi) {

@@ -1,63 +1,15 @@
 package Comms;
 
+import Player.Player;
 import Player.PlayerSocketInfo;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 public class Communication {
+    public final int socket = 2048;
 
-    private final int socket = 2048;
-    private final String ipAddress = "127.0.0.1";
-
-    private ServerSocket serverSocket;
-
-    public Communication(boolean isServer) {
-        if(isServer) {
-            try {
-                this.serverSocket = new ServerSocket(this.socket);
-            } catch (IOException e) {
-                System.out.println("couldnt create server");
-                System.exit(0);
-            }
-        }
-    }
-
-    public PlayerSocketInfo connectToClient() {
-        try {
-            Socket socket = serverSocket.accept();
-            ObjectOutputStream outToClient = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream inFromClient = new ObjectInputStream(socket.getInputStream());
-
-            return new PlayerSocketInfo(socket, inFromClient, outToClient);
-        } catch (IOException e) {
-            System.out.println("couldnt connect or smt idk1");
-            System.exit(0);
-        }
-        return null;
-    }
-
-    public PlayerSocketInfo connectToServer() {
-        try {
-            Socket aSocket = new Socket(this.ipAddress, this.socket);
-            ObjectOutputStream outToServer = new ObjectOutputStream(aSocket.getOutputStream());
-            ObjectInputStream inFromServer = new ObjectInputStream(aSocket.getInputStream());
-
-            return new PlayerSocketInfo(aSocket, inFromServer, outToServer);
-        } catch (IOException e) {
-            System.out.println("couldnt connect or smt idk2");
-            System.exit(0);
-        }
-        return null;
-    }
-
-    // TODO: ADD MSG HANDLER
-    public String[] waitForData(PlayerSocketInfo psi) {
+    public static String[] waitForData(PlayerSocketInfo psi) {
         String data = "";
 
         try {
@@ -70,7 +22,7 @@ public class Communication {
         return data.split(":")[1].split(";");
     }
 
-    public void sendData(String msg, PlayerSocketInfo psi) {
+    public static void sendData(String msg, PlayerSocketInfo psi) {
         try {
             psi.getObjectOutputStream().writeObject("data:" + msg);
         } catch (IOException e) {
@@ -80,7 +32,7 @@ public class Communication {
         }
     }
 
-    public void sendStartData(ArrayList<String> hand,
+    public static void sendStartData(ArrayList<String> hand,
                               int playerId,
                               int players,
                               int bots,
@@ -95,4 +47,14 @@ public class Communication {
         sendData(msg, psi);
     }
 
+    public static void announceToClients(String msg, ArrayList<Player> players) {
+        for(Player player: players) {
+            if(player.getIsBot()) {
+                return; // can do this because player list will be structured in a predetermined way
+            }
+            if(player.getPlayerId() != 0) {
+                sendData(msg, player.getPsi());
+            }
+        }
+    }
 }

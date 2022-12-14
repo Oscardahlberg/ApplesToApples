@@ -9,13 +9,11 @@ public class GameStart {
         boolean isServer = askIsServer();
 
         if(isServer) {
-            System.out.println("Server");
             GameServer gameServer = new GameServer();
             int totalPlayerCount = askPlayerCount();
             int botCount = askBotCount(totalPlayerCount);
             gameServer.start(totalPlayerCount - botCount, botCount);
         } else {
-            System.out.println("Client");
             GameClient gameClient = new GameClient();
             // 0 is placeholder for when playerCount is received from server
             gameClient.start(0, 0);
