@@ -24,14 +24,4 @@ public class GUI {
             System.out.println("Valid input is between and including: " + startRange + ", " + endRange);
         }
     }
-
-    public static String chooseRedApple(ArrayList<String> hand) {
-        for (int i = 0; i < hand.size(); i++) {
-            System.out.println("[" + i + "] : " + hand.get(i));
-        }
-
-        int i = GUI.validUserInput(0, 7);
-        return hand.get(i);
-    }
-
 }

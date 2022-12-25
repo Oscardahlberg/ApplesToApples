@@ -4,7 +4,7 @@ import Player.Player;
 
 import java.util.ArrayList;
 
-public abstract class GameBase {
+abstract class GameBase {
 
     ArrayList<String> greenApples;
     ArrayList<String> redApples;
@@ -17,7 +17,7 @@ public abstract class GameBase {
     int playerCount;
     int judgeId = -1;
 
-    public ArrayList<Player> players = new ArrayList<Player>();
+    ArrayList<Player> players = new ArrayList<Player>();
     abstract void start(int playerCount, int botCount);
     abstract void setUp();
 
@@ -28,6 +28,8 @@ public abstract class GameBase {
             submitRedAppleP();
             judgeWinnerP();
             distributeRedApplesP();
+
+            newTurnSetup();
         }
     }
 
@@ -36,4 +38,6 @@ public abstract class GameBase {
     abstract void submitRedAppleP();
     abstract void judgeWinnerP();
     abstract void distributeRedApplesP();
+
+    abstract void newTurnSetup();
 }

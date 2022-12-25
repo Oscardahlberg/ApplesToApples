@@ -33,15 +33,19 @@ public class GameServer extends GameBase {
 
         shuffleDeck();
 
-        System.out.println("Game has begun!");
-
         setupPlayers();
 
-        distributeHands();
+        System.out.println("Game has begun!");
 
+        distributeHands();
     }
 
     public void decideJudgeP() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.exit(0);
+        }
         if(this.judgeId == (this.players.size() - 1)) {
             this.judgeId = 0;
         } else {
@@ -63,30 +67,161 @@ public class GameServer extends GameBase {
         chooseRedApple();
 
         getPlayedRedApplesClients();
-        announceRedApples(); //TODO: BUG TEST
+        announceRedApples();
     }
 
     public void judgeWinnerP() {
+        int chosenRedApple;
+        if(this.judgeId == 0) {
+            System.out.println("Which of the red apples describe the green apple the best");
+            chosenRedApple = judge();
+        } else {
+            System.out.println("The judge, Player " + this.judgeId + ", is choosing the best red apple...");
 
+            if(this.players.get(this.judgeId).isBot()) {
+                Random rand = new Random();
+                // Here one would implement a bot to choose which red apple best
+                // represents the green apple
+                chosenRedApple = rand.nextInt(this.players.size() - 1);
+                // -2 because of index 0 and the current bot is a judge so cant be chosen
+            } else {
+                chosenRedApple = receiveChosenApple();
+            }
+        }
+        distributeChosenApple(chosenRedApple);
+        int winningPlayerId = giveGreenApple(chosenRedApple);
+        checkIfPlayerWon(winningPlayerId);
     }
 
     public void distributeRedApplesP() {
+        for (Player player : this.players) {
+            String redApple = redApples.remove(0);
+            if(player.getPlayerId() == this.judgeId) {
+                continue;
+            }
 
+            if(player.isBot() || player.getPlayerId() == 0) {
+                player.receiveRedApple(redApple);
+            } else {
+                Communication.sendData(redApple, player.getPsi());
+            }
+        }
+    }
+
+    public void newTurnSetup() {
+        System.out.println("--- New Turn ---");
+
+        this.drawnRedApples.clear();
+    }
+
+    private void checkIfPlayerWon(int winningPlayerId) {
+        if(this.players.get(winningPlayerId).getGreenApplesCount() == this.greenApplesWinCount) {
+            if(winningPlayerId == 0) {
+                System.out.println("You have won!");
+            } else {
+                System.out.println("Player " + winningPlayerId + " has won!");
+            }
+            System.exit(0);
+        } else {
+            printStats();
+        }
+    }
+
+    private void printStats() {
+        System.out.println("--- Current Green Apples ---");
+        for(Player player : this.players) {
+            if(player.equals(this.players.get(0))) {
+                System.out.println("You have " + player.getGreenApplesCount());
+            } else {
+                System.out.println("Player " + player.getPlayerId() + " has " + player.getGreenApplesCount() + " green apples");
+            }
+        }
+    }
+
+    private int giveGreenApple(int chosenRedApple) {
+
+        // This has to be done this way because the drawnRedApples contains 1 fewer cards than there are player
+        // So I couldn't just do .get(chosenRedApple)
+        for(int i = 0; i < this.players.size(); i++) {
+            if(i == this.judgeId) {
+                chosenRedApple += 1;
+                continue;
+            }
+            if(chosenRedApple == i) {
+                this.players.get(chosenRedApple).incrementGreenApplesCount();
+
+                if(chosenRedApple == 0) {
+                    System.out.println("You have received a green apple!");
+                    System.out.println("You now have "
+                            + this.players.get(chosenRedApple).getGreenApplesCount() + " green apples");
+                } else {
+                    System.out.println("Player " + chosenRedApple + " has received a green apple!");
+                    System.out.println("Player " + chosenRedApple + " now has "
+                            + this.players.get(chosenRedApple).getGreenApplesCount() + " green apples");
+                }
+                break;
+            }
+        }
+        return chosenRedApple;
+    }
+
+    private void distributeChosenApple(int chosenApple) {
+        String msg = ";" + chosenApple;
+        for(int i = 1; i < this.drawnRedApples.size(); i++) {
+            if(this.judgeId == i || this.players.get(i).isBot()) {
+                continue;
+            }
+            Communication.sendData(msg, this.players.get(i).getPsi());
+        }
+    }
+
+    private int receiveChosenApple() {
+        int chosenRedApple = Integer.parseInt(Communication.waitForData(this.players.get(this.judgeId).getPsi())[0]);
+        System.out.println("The judge chose: " + this.drawnRedApples.get(chosenRedApple));
+        return chosenRedApple;
+    }
+
+    private int judge() {
+        int chosenRedApple = GUI.validUserInput(0, this.players.size());
+        System.out.println("You chose: " + this.drawnRedApples.get(chosenRedApple));
+        return chosenRedApple;
     }
 
     private void chooseRedApple() {
         if(this.judgeId == 0) { // if server is the judge
             return;
         }
-
         System.out.println("Which red apple describes the green apple best");
+        this.drawnRedApples.add(0, chooseApple());
+    }
 
-        this.drawnRedApples.add(0, GUI.chooseRedApple(this.players.get(0).getHand()));
+    private String chooseApple() {
+        ArrayList<String> hand = this.players.get(0).getHand();
+        for (int i = 0; i < hand.size(); i++) {
+            System.out.println("[" + i + "] : " + hand.get(i));
+        }
+
+        int i = GUI.validUserInput(0, 7);
+        String card = hand.remove(i);
+        this.players.get(0).setHand(hand);
+        return card;
     }
 
     private void announceRedApples() {
+        System.out.println("---- Played Red Apples ----");
 
+        StringBuilder msg = new StringBuilder();
 
+        for(int i = 0; i < this.drawnRedApples.size(); i++) {
+            msg.append(this.drawnRedApples.get(i));
+            // to fix msg format correctly for .split()
+            if(0 != this.drawnRedApples.size() - 1) {
+                msg.append(";");
+            }
+            System.out.println("[" + i + "] : " + this.drawnRedApples.get(i));
+        }
+
+        Communication.announceToClients(msg.toString(), this.players);
     }
 
     private void getPlayedRedApplesClients() {
@@ -106,10 +241,11 @@ public class GameServer extends GameBase {
     private void botChooseCard() {
         Random rand = new Random();
         for (Player player : this.players) {
-            if(player.getIsBot()) {
+
+            // Here you would add some bot function to choose one of their cards
+            if(player.isBot() && (player.getPlayerId() != this.judgeId)) {
                 int pick = rand.nextInt(7);
                 this.drawnRedApples.add(player.getHand().remove(pick));
-                int i = 5;
             }
         }
     }
@@ -135,7 +271,7 @@ public class GameServer extends GameBase {
 
         connectPlayersAndSendSetupData();
 
-        for (int i = this.playerCount - 1; i < this.botCount + this.playerCount - 1; i++) {
+        for (int i = this.playerCount; i < this.botCount + this.playerCount; i++) {
 
             players.add(new Player(true, null, i, null));
         }
@@ -163,7 +299,7 @@ public class GameServer extends GameBase {
 
     private void distributeHands() {
         for (Player player: this.players) {
-            if(player.getIsBot() || player.getPlayerId() == 0) {
+            if(player.isBot() || player.getPlayerId() == 0) {
                 player.setHand(generateHand());
             }
         }
@@ -184,9 +320,9 @@ public class GameServer extends GameBase {
 
     private void initApples() {
         try {
-            redApples = new ArrayList<String>(Files.readAllLines(Paths.get(
+            redApples = new ArrayList<>(Files.readAllLines(Paths.get(
                     "src/Apples/RedApples", "redApples.txt"), StandardCharsets.ISO_8859_1));
-            greenApples = new ArrayList<String>(Files.readAllLines(Paths.get(
+            greenApples = new ArrayList<>(Files.readAllLines(Paths.get(
                     "src/Apples/GreenApples", "greenApples.txt"), StandardCharsets.ISO_8859_1));
         } catch (IOException e) {
             System.out.println("Couldn't read cards");

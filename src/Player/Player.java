@@ -17,7 +17,7 @@ public class Player {
         this.setHand(hand);
     }
 
-    public boolean getIsBot() {
+    public boolean isBot() {
         return this.isBot;
     }
 
@@ -33,8 +33,8 @@ public class Player {
         return this.greenApplesCount;
     }
 
-    public void setGreenApplesCount(int greenApplesCount) {
-        this.greenApplesCount = greenApplesCount;
+    public void incrementGreenApplesCount() {
+        this.greenApplesCount += 1;
     }
 
     public ArrayList<String> getHand() {
@@ -43,6 +43,10 @@ public class Player {
 
     public void setHand(ArrayList<String> hand) {
         this.hand = hand;
+    }
+
+    public void receiveRedApple(String redApple) {
+        this.hand.add(redApple);
     }
 
     public void clearHand() {

@@ -49,8 +49,8 @@ public class Communication {
 
     public static void announceToClients(String msg, ArrayList<Player> players) {
         for(Player player: players) {
-            if(player.getIsBot()) {
-                return; // can do this because player list will be structured in a predetermined way
+            if(player.isBot()) {
+                return; // can do this because player list is structured in a predetermined way
             }
             if(player.getPlayerId() != 0) {
                 sendData(msg, player.getPsi());
