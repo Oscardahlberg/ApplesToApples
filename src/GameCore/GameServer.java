@@ -83,7 +83,6 @@ public class GameServer extends GameBase {
                 // Here one would implement a bot to choose which red apple best
                 // represents the green apple
                 chosenRedApple = rand.nextInt(this.players.size() - 1);
-                // -2 because of index 0 and the current bot is a judge so cant be chosen
             } else {
                 chosenRedApple = receiveChosenApple();
             }
